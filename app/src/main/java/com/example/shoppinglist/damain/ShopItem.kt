@@ -1,4 +1,4 @@
-package com.example.shoppinglist.data
+package com.example.shoppinglist.damain
 
 data class ShopItem(
     val id: Int,
