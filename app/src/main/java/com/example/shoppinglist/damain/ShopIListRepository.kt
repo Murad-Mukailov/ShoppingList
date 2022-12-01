@@ -1,5 +1,7 @@
 package com.example.shoppinglist.damain
 
+import androidx.lifecycle.LiveData
+
 interface ShopIListRepository {
     fun addShopItem(shopItem: ShopItem)
 
@@ -7,8 +9,8 @@ interface ShopIListRepository {
 
     fun editShopItem(shopItem: ShopItem)
 
-    fun getShopItem(shopItemId: ShopItem):ShopItem
+    fun getShopItem(shopItemId: Int):ShopItem
 
-    fun getShopList(): List<ShopItem>
+    fun getShopList(): LiveData<List<ShopItem>>
 
 }
