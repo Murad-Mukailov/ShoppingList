@@ -1,11 +1,6 @@
 package com.example.shoppinglist.presentation
 
-import android.content.Context
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.shoppinglist.R
 import com.example.shoppinglist.damain.DeleteShopItemUseCase
 import com.example.shoppinglist.damain.EditShopItemUseCase
 import com.example.shoppinglist.damain.GetShopListUseCase
@@ -30,5 +25,6 @@ class MainViewModel : ViewModel() {
         val newItem = shopItem.copy(enabled = !shopItem.enabled)
         editShopItemUseCase.editShopItem(newItem)
     }
+
 
 }
