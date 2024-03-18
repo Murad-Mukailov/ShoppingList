@@ -1,4 +1,4 @@
-package com.example.shoppinglist.presentation
+package com.example.shoppinglist.main.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

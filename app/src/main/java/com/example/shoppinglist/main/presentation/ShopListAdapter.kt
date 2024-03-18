@@ -1,12 +1,12 @@
-package com.example.shoppinglist.presentation
+package com.example.shoppinglist.main.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.shoppinglist.R
-import com.example.shoppinglist.domain.ShopItem
+import com.example.shoppinglist.main.domain.ShopItem
 
-class ShopListAdapter : ListAdapter <ShopItem,ShopItemViewHolder>(ShopItemDiffCallback()) {
+class ShopListAdapter : ListAdapter <ShopItem, ShopItemViewHolder>(ShopItemDiffCallback()) {
 
     var onShopItemLongClick: ((ShopItem) -> Unit)? = null
     var onShopItemClick: ((ShopItem) -> Unit)? = null

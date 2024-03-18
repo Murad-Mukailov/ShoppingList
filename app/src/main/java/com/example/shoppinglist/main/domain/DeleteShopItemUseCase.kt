@@ -1,4 +1,4 @@
-package com.example.shoppinglist.domain
+package com.example.shoppinglist.main.domain
 
 class DeleteShopItemUseCase(private val shopListRepository: ShopListRepository) {
     fun deleteShopItem(shopItem: ShopItem) {
