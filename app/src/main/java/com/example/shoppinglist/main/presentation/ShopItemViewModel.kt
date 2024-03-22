@@ -1,4 +1,4 @@
-package com.example.shoppinglist.main.presentation
+package com.sumin.shoppinglist.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,16 +8,16 @@ import com.example.shoppinglist.main.domain.AddShopItemUseCase
 import com.example.shoppinglist.main.domain.EditShopItemUseCase
 import com.example.shoppinglist.main.domain.GetShopItemUseCase
 import com.example.shoppinglist.main.domain.ShopItem
-import com.example.shoppinglist.main.domain.ShopListRepository
 
 class ShopItemViewModel : ViewModel() {
-    private var repository = ShopListRepositoryImpl
-    private var getShopItemUseCase = GetShopItemUseCase(repository)
-    private var addShopItemUseCase = AddShopItemUseCase(repository)
-    private var editShopItemUseCase = EditShopItemUseCase(repository)
+
+    private val repository = ShopListRepositoryImpl
+
+    private val getShopItemUseCase = GetShopItemUseCase(repository)
+    private val addShopItemUseCase = AddShopItemUseCase(repository)
+    private val editShopItemUseCase = EditShopItemUseCase(repository)
 
     private val _errorInputName = MutableLiveData<Boolean>()
-
     val errorInputName: LiveData<Boolean>
         get() = _errorInputName
 
@@ -33,9 +33,9 @@ class ShopItemViewModel : ViewModel() {
     val shouldCloseScreen: LiveData<Unit>
         get() = _shouldCloseScreen
 
-
     fun getShopItem(shopItemId: Int) {
         val item = getShopItemUseCase.getShopItem(shopItemId)
+        _shopItem.value = item
     }
 
     fun addShopItem(inputName: String?, inputCount: String?) {
@@ -69,7 +69,6 @@ class ShopItemViewModel : ViewModel() {
     private fun parseCount(inputCount: String?): Int {
         return try {
             inputCount?.trim()?.toInt() ?: 0
-
         } catch (e: Exception) {
             0
         }
@@ -78,11 +77,11 @@ class ShopItemViewModel : ViewModel() {
     private fun validateInput(name: String, count: Int): Boolean {
         var result = true
         if (name.isBlank()) {
-            _errorInputName.value = false
+            _errorInputName.value = true
             result = false
         }
         if (count <= 0) {
-            _errorInputCount.value = false
+            _errorInputCount.value = true
             result = false
         }
         return result
