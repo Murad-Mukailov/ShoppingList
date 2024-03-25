@@ -16,7 +16,7 @@ class ShopListAdapter : ListAdapter <ShopItem, ShopItemViewHolder>(ShopItemDiffC
         val layout = when (viewType) {
             ENABLED_TYPE -> R.layout.item_shop_enabled
             DISABLED_TYPE -> R.layout.item_shop_disabled
-            else -> throw Exception("Unknown view type ${viewType}")
+            else -> throw Exception("Unknown view type $viewType")
         }
         val view = LayoutInflater.from(parent.context)
             .inflate(layout, parent, false)
@@ -34,7 +34,6 @@ class ShopListAdapter : ListAdapter <ShopItem, ShopItemViewHolder>(ShopItemDiffC
             onShopItemClick?.invoke(shopItem)
         }
     }
-
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
